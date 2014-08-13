@@ -7,9 +7,12 @@ https://docs.djangoproject.com/en/1.6/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
+import os
+
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -37,8 +40,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'mcoauth',
+
     'provider',
     'provider.oauth2',
+
+    'bootstrap3',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -48,6 +55,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS += (
+    'django.core.context_processors.request',
 )
 
 ROOT_URLCONF = 'mcoauth.urls'

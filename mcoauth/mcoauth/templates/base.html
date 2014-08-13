@@ -1,0 +1,35 @@
+{% extends 'bootstrap.html' %}
+
+{% load i18n %}
+{% load static %}
+{% load bootstrap3 %}
+
+{% block bootstrap3_extra_head %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+{% endblock %}
+
+{% block bootstrap3_content %}
+    <div class="container">
+        <div class="header">
+            {% block menu %}
+            <ul class="nav nav-pills pull-right">
+                <li class="active"><a href="#">{% trans "Home" %}</a></li>
+                <li><a href="#">{% trans "Sign in" %}</a></li>
+                <li><a href="#">{% trans "About" %}</a></li>
+                <li><a href="#">{% trans "Contact" %}</a></li>
+            </ul>
+            {% endblock %}
+            <h3 class="text-muted">{% block title %}OAuth2 Provider for Minecraft{% endblock %}</h3>
+        </div>
+
+        {% bootstrap_messages %}
+
+        {% block content %}
+        {% endblock %}
+
+        <div class="footer">
+            <p>&copy; CDRVMedia 2014</p>
+        </div>
+
+    </div> <!-- /container -->
+{% endblock %}
