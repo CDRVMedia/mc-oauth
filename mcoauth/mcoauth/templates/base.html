@@ -14,7 +14,7 @@
             {% block menu %}
             <ul class="nav nav-pills pull-right">
                 <li class="active"><a href="#">{% trans "Home" %}</a></li>
-                <li><a href="#">{% trans "Sign in" %}</a></li>
+                <li><a href="{% url "auth_login" %}">{% trans "Sign in" %}</a></li>
                 <li><a href="#">{% trans "About" %}</a></li>
                 <li><a href="#">{% trans "Contact" %}</a></li>
             </ul>
