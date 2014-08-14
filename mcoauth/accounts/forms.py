@@ -8,23 +8,16 @@ User = get_user_model()
 
 
 class RegistrationForm(RegistrationForm):
+    """ Note: These forms were inherited only to remove
+        the username dependency
+    """
     def __init__(self, *args, **kwargs):
         super(RegistrationForm, self).__init__(*args, **kwargs)
         del self.fields['username']
 
 
 class RegistrationFormUniqueEmail(RegistrationForm):
-    """
-    Subclass of ``RegistrationForm`` which enforces uniqueness of
-    email addresses.
-    
-    """
     def clean_email(self):
-        """
-        Validate that the supplied email address is unique for the
-        site.
-        
-        """
         if User.objects.filter(email__iexact=self.cleaned_data['email']):
             raise forms.ValidationError(
                 _(
