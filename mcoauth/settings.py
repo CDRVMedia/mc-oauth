@@ -63,6 +63,10 @@ TEMPLATE_CONTEXT_PROCESSORS += (
     'django.core.context_processors.request',
 )
 
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates'),
+)
+
 ROOT_URLCONF = 'mcoauth.urls'
 
 WSGI_APPLICATION = 'mcoauth.wsgi.application'
