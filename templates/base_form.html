@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load bootstrap3 %}
+
+{% block content %}
+    <form method="POST" action="{{ request.path }}">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% block form_buttons %}
+            {% buttons submit=form_submit|default:_('Save') reset=form_reset|default:_("Cancel") %}{% endbuttons %}
+        {% endblock %}
+    </form>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base_form.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <h2>{% trans "Register an Application" %}</h2>
+    {% with form_submit=_('Register') %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}

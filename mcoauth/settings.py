@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+from django.core.urlresolvers import reverse_lazy
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -103,7 +104,7 @@ STATIC_URL = '/static/'
 
 # Registration settings
 AUTH_USER_MODEL = 'accounts.User'
-
 ACCOUNT_ACTIVATION_DAYS = 7
+LOGIN_REDIRECT_URL = reverse_lazy('app:list')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
