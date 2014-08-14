@@ -40,8 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'mcoauth',
-    'accounts',
+    'mcoauth.core',
+    'mcoauth.accounts',
 
     'provider',
     'provider.oauth2',
