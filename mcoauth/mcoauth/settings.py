@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'mcoauth',
+    'accounts',
 
     'provider',
     'provider.oauth2',
@@ -97,4 +98,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Registration settings
+AUTH_USER_MODEL = 'accounts.User'
+
 ACCOUNT_ACTIVATION_DAYS = 7
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
