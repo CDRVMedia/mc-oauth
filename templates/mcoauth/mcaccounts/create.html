@@ -1,0 +1,10 @@
+{% extends 'base_form.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <h2>{% trans "Add a Minecraft Account" %}</h2>
+    {% with form_submit=_('Add') %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}

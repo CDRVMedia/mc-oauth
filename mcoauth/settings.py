@@ -43,6 +43,7 @@ INSTALLED_APPS = (
 
     'mcoauth.core',
     'mcoauth.accounts',
+    'mcoauth.mcaccounts',
 
     'provider',
     'provider.oauth2',
