@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load bootstrap3 %}
+
+{% block content %}
+    <h2>{% trans "Dashboard" %}</h2>
+    <div class="row">
+        <div class="col-lg-6">
+            <h4>{% trans "Minecraft Accounts" %}</h4>
+            <a href="{% url "minecraft:list" %}" class="btn btn-primary">{% trans "Manage Minecraft Accounts" %}</a>
+        </div>
+
+        <div class="col-lg-6">
+            <h4>{% trans "Applications" %}</h4>
+            <a href="{% url "app:list" %}" class="btn btn-primary">{% trans "Manage Applications" %}</a>
+        </div>
+    </div>
+{% endblock %}
