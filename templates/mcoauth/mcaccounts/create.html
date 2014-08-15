@@ -5,6 +5,7 @@
 
 {% block content %}
     <h2>{% trans "Add a Minecraft Account" %}</h2>
+    {% url "minecraft:list" as cancel_url %}
     {% with form_submit=_('Add') %}
         {{ block.super }}
     {% endwith %}
