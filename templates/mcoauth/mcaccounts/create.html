@@ -1,10 +1,17 @@
 {% extends 'base_form.html' %}
 
 {% load i18n %}
+{% load bootstrap3 %}
 
 {% block content %}
     <h2>{% trans "Add a Minecraft Account" %}</h2>
     {% with form_submit=_('Add') %}
         {{ block.super }}
     {% endwith %}
+{% endblock %}
+
+{% block form %}
+    {% bootstrap_field form.name %}
+    <input style="display:none"><!-- Prevents autofill -->
+    {% bootstrap_field form.password %}
 {% endblock %}

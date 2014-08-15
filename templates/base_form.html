@@ -6,7 +6,9 @@
 {% block content %}
     <form method="POST" action="{{ request.path }}">
         {% csrf_token %}
-        {% bootstrap_form form %}
+        {% block form %}
+            {% bootstrap_form form %}
+        {% endblock %}
         {% block form_buttons %}
             {% buttons submit=form_submit|default:_('Save') reset=form_reset|default:_("Cancel") %}{% endbuttons %}
         {% endblock %}
