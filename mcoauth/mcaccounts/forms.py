@@ -35,6 +35,15 @@ class MinecraftAccountForm(forms.ModelForm):
             self.instance.profile_id = profile_id
             self.instance.profile = profile
 
+            try:
+                MinecraftAccount.objects.get(profile_id=profile_id)
+            except MinecraftAccount.DoesNotExist:
+                pass
+            else:
+                raise forms.ValidationError(_(
+                    'This Minecraft Profile is already being used '
+                    'by another account.'))
+
         return cleaned_data
 
     def save(self, user, **kwargs):
