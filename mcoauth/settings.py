@@ -50,6 +50,7 @@ INSTALLED_APPS = (
 
     'bootstrap3',
     'registration',
+    'sorl.thumbnail',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -104,9 +105,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+THUMBNAIL_BACKEND = 'mcoauth.mcaccounts.backends.thumbnail.ThumbnailBackend'
+
 # Registration settings
 AUTH_USER_MODEL = 'accounts.User'
 ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+DEFAULT_USER_AVATAR = 'images/default_user_avatar.png'

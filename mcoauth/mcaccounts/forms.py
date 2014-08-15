@@ -21,11 +21,19 @@ class MinecraftAccountForm(forms.ModelForm):
         password = self.cleaned_data.get('password')
 
         try:
-            authenticate(username, password)
+            response = authenticate(username, password)
         except:
             raise forms.ValidationError(_(
                 'You entered invalid credentials. '
                 'Username or password are incorrect.'))
+        else:
+            selected_profile = response.get('selectedProfile')
+
+            profile_id = selected_profile.get('id')
+            profile = selected_profile.get('name')
+
+            self.instance.profile_id = profile_id
+            self.instance.profile = profile
 
         return cleaned_data
 

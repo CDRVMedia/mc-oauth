@@ -3,3 +3,10 @@ Django==1.6.5
 django-oauth2-provider==0.2.6.1
 django-bootstrap3==4.10.0
 django-registration==1.0
+
+Pillow==2.5.2
+requests==2.3.0
+
+# Solves transparency issue
+# https://github.com/mariocesar/sorl-thumbnail/pull/274
+http://github.com/mariocesar/sorl-thumbnail/archive/master.zip#egg=sorl-thumbnail==11.12.1b
