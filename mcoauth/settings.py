@@ -62,6 +62,7 @@ MIDDLEWARE_CLASSES = (
 
 TEMPLATE_CONTEXT_PROCESSORS += (
     'django.core.context_processors.request',
+    'mcoauth.core.context_processors.domain',
 )
 
 TEMPLATE_DIRS = (
