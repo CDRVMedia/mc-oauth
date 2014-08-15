@@ -118,3 +118,10 @@ LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 DEFAULT_USER_AVATAR = 'images/default_user_avatar.png'
+
+# OAuth settings
+SCOPE_RETRIEVE_MINECRAFT_ACCOUNTS = 1 << 1
+
+OAUTH_SCOPES = (
+    (SCOPE_RETRIEVE_MINECRAFT_ACCOUNTS, 'retrieve_accounts'),
+)

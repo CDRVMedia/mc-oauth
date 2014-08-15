@@ -14,10 +14,8 @@
             <ul class="list-group">
                 {% for permission in oauth_data.scope|scopes %}
                     <li class="list-group-item" style="text-align:left">
-                        {% if permission == "read" %}
-                        {% bootstrap_icon "eye-open" %} Read your data
-                        {% else %}
-                        {% bootstrap_icon "pencil" %} Write your data
+                        {% if permission == "retrieve_accounts" %}
+                        {% bootstrap_icon "download" %} {% trans "Retrieve details about your Minecraft accounts" %}
                         {% endif %}
                     </li>
                 {% endfor %}
