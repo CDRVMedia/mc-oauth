@@ -1,4 +1,5 @@
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, \
+    DeleteView, DetailView
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import redirect
 
@@ -36,3 +37,8 @@ class AppDelete(DeleteView):
     model = Client
     template_name = 'mcoauth/apps/delete.html'
     success_url = reverse_lazy('app:list')
+
+
+class AppCredentials(DetailView):
+    model = Client
+    template_name = 'mcoauth/apps/credentials.html'
