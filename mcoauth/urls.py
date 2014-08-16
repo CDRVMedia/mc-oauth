@@ -12,6 +12,7 @@ urlpatterns = patterns(
     url(r'^minecraft/', include('mcoauth.mcaccounts.urls',
         namespace='minecraft')),
     url(r'^oauth2/', include('provider.oauth2.urls', namespace='oauth2')),
+    url(r'^api/', include('mcoauth.api.urls', namespace='api')),
     url(r'^admin/', include(admin.site.urls)),
 )
 

@@ -6,7 +6,7 @@
 {% block content %}
     <h1>{% trans "Sign in" %}</h1>
     <hr>
-    <form method="POST" action="{{ request.path }}">
+    <form method="POST" action="{{ request.path }}?next={{ next|urlencode }}">
         {% csrf_token %}
         {% bootstrap_form form %}
         {% buttons submit=_('Continue') reset=_("Cancel") %}{% endbuttons %}

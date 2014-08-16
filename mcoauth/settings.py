@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'mcoauth.core',
     'mcoauth.accounts',
     'mcoauth.mcaccounts',
+    'mcoauth.api',
 
     'provider',
     'provider.oauth2',
