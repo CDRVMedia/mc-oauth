@@ -20,8 +20,7 @@ def _get_access_token(request):
 def user(request):
     access_token = _get_access_token(request)
     base_url = 'http://%s' % request.get_host()
-    minecraft_account = access_token.user.minecraft_accounts.primary()
-    data = minecraft_account.get_api_dict(base_url)
+    data = access_token.user.get_api_dict(base_url)
     return HttpResponse(json.dumps(data), content_type='application/json')
 
 

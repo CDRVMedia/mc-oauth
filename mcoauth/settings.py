@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 import os
 
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS, \
+    AUTHENTICATION_BACKENDS
 from django.core.urlresolvers import reverse_lazy
 
 
@@ -20,8 +21,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '9y+h41#66jdn$*%%u!r4w*&*hjk2$8244*n(+1-7!ki8oz1_h8'
+# SECURITY WARNING: keep the secret key used in production secret
+# !! Generate your own. You may want to use the code below:
+# from string import printable; from random import SystemRandom
+# print ''.join([SystemRandom().choice(printable[:-6]) for c in range(50)])
+SECRET_KEY = 'ar+HGtP4(^_xw-tXPy:4}!3<qgOQLSSRItCDTv<2`r7y!sp$Vs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -125,4 +129,8 @@ SCOPE_RETRIEVE_MINECRAFT_ACCOUNTS = 1 << 1
 
 OAUTH_SCOPES = (
     (SCOPE_RETRIEVE_MINECRAFT_ACCOUNTS, 'retrieve_accounts'),
+)
+
+AUTHENTICATION_BACKENDS += (
+    'mcoauth.mcaccounts.backends.authentication.MinecraftBackend',
 )

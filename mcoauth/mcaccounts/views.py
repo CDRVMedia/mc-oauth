@@ -1,6 +1,6 @@
 from django.views.generic import ListView, FormView, DeleteView
 from django.core.urlresolvers import reverse_lazy
-from django.shortcuts import redirect
+from django.shortcuts import redirect, resolve_url
 
 from .models import MinecraftAccount
 from .forms import MinecraftAccountForm

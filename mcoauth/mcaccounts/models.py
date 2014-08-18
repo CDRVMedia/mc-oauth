@@ -23,6 +23,7 @@ class MinecraftAccount(models.Model):
 
     def get_api_dict(self, base_url):
         return {
-            'username': self.profile,
+            'name': self.profile,
+            'uid': self.profile_id,
             'avatar': base_url + self.get_avatar('64x64'),
         }
