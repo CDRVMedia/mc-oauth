@@ -1,12 +1,10 @@
-Django==1.6.5
+-r requirements_core.txt
 
-django-oauth2-provider==0.2.6.1
-django-bootstrap3==4.10.0
-django-registration==1.0
+# The following packages are used exclusively in the production configuration.
+# 
+# Use requirements_core.txt for local development:
+# 
+#     pip install -r requirements_core.txt
 
-Pillow==2.5.2
-requests==2.3.0
-
-# Solves transparency issue
-# https://github.com/mariocesar/sorl-thumbnail/pull/274
-http://github.com/mariocesar/sorl-thumbnail/archive/master.zip#egg=sorl-thumbnail==11.12.1b
+gevent==1.0.1
+greenlet==0.4.2

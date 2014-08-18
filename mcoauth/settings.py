@@ -8,7 +8,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 import os
+import sys
 
+import dj_database_url
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS, \
     AUTHENTICATION_BACKENDS
 from django.core.urlresolvers import reverse_lazy
@@ -34,6 +36,10 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+if 'test' in sys.argv:
+    TESTING = True
+else:
+    TESTING = False
 
 # Application definition
 
@@ -44,6 +50,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'gunicorn',
 
     'mcoauth.core',
     'mcoauth.accounts',
@@ -56,6 +64,9 @@ INSTALLED_APPS = (
     'bootstrap3',
     'registration',
     'sorl.thumbnail',
+
+    # The following apps must be last
+    'south',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -81,15 +92,19 @@ ROOT_URLCONF = 'mcoauth.urls'
 WSGI_APPLICATION = 'mcoauth.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+DATABASES = {'default': dj_database_url.config(
+    default='postgres://postgres:postgres@localhost/mcoauth-local')
 }
+
+# Enable persistent database connections for 10 seconds
+if os.environ.get('DATABASE_URL'):
+    DATABASES['default']['CONN_MAX_AGE'] = 10
+
+if TESTING:
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
+    DATABASES['default']['NAME'] = os.path.join(BASE_DIR, 'db.sqlite3')
+    DATABASES['default']['AUTOCOMMIT'] = True
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
