@@ -96,10 +96,6 @@ DATABASES = {'default': dj_database_url.config(
     default='postgres://postgres:postgres@localhost/mcoauth-local')
 }
 
-# Enable persistent database connections for 10 seconds
-if os.environ.get('DATABASE_URL'):
-    DATABASES['default']['CONN_MAX_AGE'] = 10
-
 if TESTING:
     DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
     DATABASES['default']['NAME'] = os.path.join(BASE_DIR, 'db.sqlite3')
