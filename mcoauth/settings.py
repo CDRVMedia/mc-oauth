@@ -34,7 +34,7 @@ DEBUG = os.environ.get('DEBUG', 'False') == 'True'  # default: False
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 if 'test' in sys.argv:
     TESTING = True
