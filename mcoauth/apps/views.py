@@ -12,6 +12,12 @@ class AppList(AppUserObjectsMixin, ListView):
 class AppCreate(AppUserObjectMixin, AppFormMixin, CreateView):
     template_name = 'mcoauth/apps/create.html'
 
+    def get_initial(self):
+        initial = super(AppCreate, self).get_initial()
+        initial['url'] = 'http://'
+        initial['redirect_uri'] = 'http://'
+        return initial
+
 
 class AppUpdate(AppUserObjectsMixin, AppFormMixin, UpdateView):
     template_name = 'mcoauth/apps/update.html'
