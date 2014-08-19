@@ -2,7 +2,8 @@ from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import redirect
 
 from provider.oauth2.models import Client
-from provider.oauth2.forms import ClientForm
+
+from .forms import ClientForm
 
 
 class AppUserObjectMixin(object):
