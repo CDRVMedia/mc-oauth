@@ -1,5 +1,7 @@
 from django.utils.translation import ugettext as _
+
 from provider.oauth2.forms import AuthorizationRequestForm
+from provider.forms import OAuthValidationError
 
 
 class AuthorizationRequestForm(AuthorizationRequestForm):
