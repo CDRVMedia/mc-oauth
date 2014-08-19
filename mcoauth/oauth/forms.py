@@ -26,7 +26,7 @@ class AuthorizationRequestForm(AuthorizationRequestForm):
         """ Returns if redirect_uri has the same domain or it is a
             subdomain of client_redirect_uri.
         """
-        redirect_domain = urlparse(redirect_uri).netloc
-        client_domain = urlparse(client_redirect_uri).netloc
+        redirect_domain = urlparse(redirect_uri).hostname
+        client_domain = urlparse(client_redirect_uri).hostname
 
         return redirect_domain.endswith(client_domain)
