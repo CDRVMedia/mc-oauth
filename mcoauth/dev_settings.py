@@ -2,6 +2,8 @@ import os
 
 from .settings import *
 
+DEBUG = True
+
 # Local database
 DATABASES = {
     'default': {
