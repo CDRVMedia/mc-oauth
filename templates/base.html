@@ -22,10 +22,8 @@
                             {% if not request.user.is_authenticated %}
                                 <li class="active"><a href="{% url "home" %}">{% trans "Home" %}</a></li>
                             {% else %}
-                                <li class="active"><a href="{% url "app:list" %}">{% trans "Your Applications" %}</a></li>
+                                <li class="active"><a href="{% url "app:list" %}">{% trans "Applications" %}</a></li>
                             {% endif %}
-                            <li><a href="#">{% trans "About" %}</a></li>
-                            <li><a href="#">{% trans "Contact" %}</a></li>
                         </ul>
                         {% endblock %}
                     </div>
