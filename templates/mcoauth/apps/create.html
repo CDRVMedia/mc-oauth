@@ -2,8 +2,9 @@
 
 {% load i18n %}
 
+{% block title %}{% trans "Register an Application" %}{% endblock %}
+
 {% block content %}
-    <h2>{% trans "Register an Application" %}</h2>
     {% url "app:list" as cancel_url %}
     {% with form_submit=_('Register') %}
         {{ block.super }}

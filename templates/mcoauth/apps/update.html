@@ -3,8 +3,9 @@
 {% load i18n %}
 {% load bootstrap3 %}
 
+{% block title %}{% trans "Update Application" %}{% endblock %}
+
 {% block content %}
-    <h2>{% trans "Update Application" %}</h2>
     {% url "app:list" as cancel_url %}
     {% with form_submit=_('Save') %}
         {{ block.super }}

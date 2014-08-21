@@ -4,11 +4,13 @@
 {% load bootstrap3 %}
 {% load avatar_tags %}
 
+{% block title %}{% trans "Your Minecraft Accounts" %}{% endblock %}
+
 {% block content %}
     {% if object_list %}
         <a href="{% url "minecraft:create" %}" class="btn btn-success pull-right">{% trans "Add a Minecraft Account" %}</a>
     {% endif %}
-    <h2>{% trans "Your Minecraft Accounts" %}</h2>
+    {{ block.super }}
     {% if object_list %}
         <div class="row">
             {% for minecraft in object_list %}

@@ -139,7 +139,7 @@ if USE_CLOUD_STORAGE:
 # Registration settings
 AUTH_USER_MODEL = 'accounts.User'
 ACCOUNT_ACTIVATION_DAYS = 7
-LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
+LOGIN_REDIRECT_URL = reverse_lazy('app:list')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

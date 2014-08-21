@@ -3,9 +3,11 @@
 {% load i18n %}
 {% load bootstrap3 %}
 
+{% block title %}{% trans "Sign up" %}{% endblock %}
+
 {% block content %}
-    <h1>{% trans "Sign up" %}</h1>
-    <hr>
+    {{ block.super }}
+    <br>
     <form method="POST" action="{{ request.path }}">
         {% csrf_token %}
         {% bootstrap_form form %}

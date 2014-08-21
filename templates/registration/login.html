@@ -3,14 +3,18 @@
 {% load i18n %}
 {% load bootstrap3 %}
 
+{% block title %}{% trans "Sign in" %}{% endblock %}
+
 {% block content %}
-    <h1>{% trans "Sign in" %}<br><small>{% trans "You can also sign in using your Minecraft account" %}</h1>
+    <h2>{% trans "Sign in" %}<br><small>{% trans "You can also sign in using your Minecraft account" %}</h2>
     {% url "registration_register" as registration_url %}
     <p>{% blocktrans %}If you don't have an account, <a href="{{ registration_url }}">click here</a> to create one.{% endblocktrans %}</p>
     <br>
     <form method="POST" action="{{ request.path }}?next={{ next|urlencode }}">
         {% csrf_token %}
         {% bootstrap_form form %}
-        {% buttons submit=_('Continue') reset=_("Cancel") %}{% endbuttons %}
+        {% buttons submit=_('Continue') reset=_("Cancel") %}
+        <a href="{% url "password_reset" %}" class="pull-right">{% trans "Forgot your password?" %}</a>
+        {% endbuttons %}
     </form>
 {% endblock %}
