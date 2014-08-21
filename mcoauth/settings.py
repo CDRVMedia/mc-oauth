@@ -140,8 +140,6 @@ AUTH_USER_MODEL = 'accounts.User'
 ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = reverse_lazy('app:list')
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 DEFAULT_USER_AVATAR = 'images/default_user_avatar.png'
 
 # OAuth settings
@@ -154,3 +152,16 @@ OAUTH_SCOPES = (
 AUTHENTICATION_BACKENDS += (
     'mcoauth.mcaccounts.backends.authentication.MinecraftBackend',
 )
+
+EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
+EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_SUBJECT_PREFIX = '[mc-oauth] '
+EMAIL_USE_TLS = True
+
+if not EMAIL_HOST_USER and not EMAIL_HOST_PASSWORD:
+    # Set backend to console if mail settings not defined
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+DEFAULT_FROM_EMAIL = 'mc-oauth <%s>' % EMAIL_HOST_USER
