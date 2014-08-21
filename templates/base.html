@@ -21,17 +21,19 @@
                         {% trans "Sign in" %}
                     </a>
                 {% else %}
-                    <div class="btn-group pull-right">
-                        <a href="{% url "app:list" %}" class="btn btn-default">{% trans "Applications" %}</a>
+                    <div class="pull-right">
                         <div class="btn-group">
-                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-                                {% trans "Account" %} <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{% url "password_change" %}">{% trans "Change password" %}</a></li>
-                                <li class="divider"></li>
-                                <li><a href="{% url "auth_logout" %}">{% trans "Sign out" %}</a></li>
-                            </ul>
+                            <a href="{% url "app:list" %}" class="btn btn-default">{% trans "Applications" %}</a>
+                            <div class="btn-group">
+                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                                    {% trans "Account" %} <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{% url "password_change" %}">{% trans "Change password" %}</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="{% url "auth_logout" %}">{% trans "Sign out" %}</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 {% endif %}
@@ -41,11 +43,15 @@
         {% bootstrap_messages %}
 
         {% block content %}
-            <h2>{% block title %}{% endblock %}</h2>
+            {% block content_title %}
+                <h2>{% block title %}{% endblock %}</h2>
+            {% endblock %}
         {% endblock %}
 
         <div class="footer">
-            <p>&copy; CDRVMedia 2014</p>
+            {% block footer %}
+                <p>&copy; CDRVMedia 2014</p>
+            {% endblock %}
         </div>
 
     </div> <!-- /container -->
