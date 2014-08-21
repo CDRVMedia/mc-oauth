@@ -16,7 +16,7 @@
             </div>
             <div class="col-md-8">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-7">
                         {% block menu %}
                         <ul class="nav nav-pills">
                             {% if not request.user.is_authenticated %}
@@ -27,19 +27,24 @@
                         </ul>
                         {% endblock %}
                     </div>
-                    <div class="col-md-4">
-                        <p>
-                            {% if not request.user.is_authenticated %}
-                                <a href="{% url "auth_login" %}" class="btn btn-default">
-                                    {% bootstrap_icon "log-in" %}
-                                    {% trans "Sign in" %}
-                                </a>
-                            {% else %}
-                                {% trans "Logged in" %} {% bootstrap_icon "ok" %}
-                                <br>
-                                <a href="{% url "auth_logout" %}">{% trans "Sign out" %}</a>
-                            {% endif %}
-                        </p>
+                    <div class="col-md-5">
+                        {% if not request.user.is_authenticated %}
+                            <a href="{% url "auth_login" %}" class="btn btn-default pull-right">
+                                {% bootstrap_icon "log-in" %}
+                                {% trans "Sign in" %}
+                            </a>
+                        {% else %}
+                            <div class="btn-group pull-right">
+                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                                    {% trans "Account" %} <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{% url "password_change" %}">{% trans "Change password" %}</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="{% url "auth_logout" %}">{% trans "Sign out" %}</a></li>
+                                </ul>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
