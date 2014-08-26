@@ -15,7 +15,7 @@
                 {% for permission in oauth_data.scope|scopes %}
                     <li class="list-group-item" style="text-align:left">
                         {% if permission == "retrieve_accounts" %}
-                        {% bootstrap_icon "download" %} {% trans "Retrieve details about your Minecraft accounts" %}
+                        {% bootstrap_icon "download" %} {% trans "Retrieve email address, player name, and player unique id for your Minecraft accounts" %}
                         {% endif %}
                     </li>
                 {% endfor %}
