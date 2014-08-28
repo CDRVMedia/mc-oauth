@@ -28,6 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # from string import printable; from random import SystemRandom
 # print ''.join([SystemRandom().choice(printable[:-6]) for c in range(50)])
 SECRET_KEY = 'ar+HGtP4(^_xw-tXPy:4}!3<qgOQLSSRItCDTv<2`r7y!sp$Vs'
+STATIC_KEY = os.environ.get('SECRET_KEY', SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
