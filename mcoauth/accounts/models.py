@@ -1,13 +1,9 @@
-from .managers import UserManager
 from .abstract_models import AbstractUser
+from .managers import UserManager
 
 
 class User(AbstractUser):
     objects = UserManager()
-
-    @property
-    def username(self):
-        return 'user%d' % self.pk
 
     def get_api_dict(self, base_url):
         minecraft_account = self.minecraft_accounts.primary()

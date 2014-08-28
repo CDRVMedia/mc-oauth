@@ -10,6 +10,9 @@ class AbstractUser(AbstractBaseUser):
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=30, blank=True)
 
+    username = models.CharField(
+        verbose_name=_('username'), max_length=255, unique=True, blank=False)
+
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,
@@ -29,7 +32,7 @@ class AbstractUser(AbstractBaseUser):
 
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
 
     class Meta:

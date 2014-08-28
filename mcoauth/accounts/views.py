@@ -13,15 +13,3 @@ class RegistrationView(RegistrationView):
         to inherit this view to remove the username dependency.
     """
     form_class = RegistrationFormUniqueEmail
-
-    def register(self, request, **cleaned_data):
-        email, password = cleaned_data['email'], cleaned_data['password1']
-        if Site._meta.installed:
-            site = Site.objects.get_current()
-        else:
-            site = RequestSite(request)
-        new_user = RegistrationProfile.objects.create_inactive_user(
-            None, email, password, site)
-        signals.user_registered.send(sender=self.__class__, user=new_user,
-                                     request=request)
-        return new_user

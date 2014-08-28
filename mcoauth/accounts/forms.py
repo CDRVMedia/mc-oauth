@@ -25,3 +25,8 @@ class RegistrationFormUniqueEmail(RegistrationForm):
                     "Please supply a different email address."
                 ))
         return self.cleaned_data['email']
+
+    def clean(self):
+        cleaned_data = super(RegistrationFormUniqueEmail, self).clean()
+        cleaned_data['username'] = cleaned_data.get('email')
+        return cleaned_data
