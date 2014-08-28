@@ -6,7 +6,7 @@
 {% block content %}
     {{ block.super }}
     {% bootstrap_form_errors form %}
-    <form method="POST" action="{{ request.path }}">
+    <form method="POST" action="{{ request.path }}{% if next %}?next={{ next|urlencode }}{% endif %}">
         {% csrf_token %}
         {% block form %}
             {% bootstrap_form form %}

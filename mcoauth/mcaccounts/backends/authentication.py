@@ -15,19 +15,21 @@ class MinecraftBackend(object):
         except:
             return None
         else:
-            profiles = []
-
-            # Add selected profile
-            selected_profile_id = response.get('selectedProfile').get('id')
-
             # Append other profiles
             profiles = response.get('availableProfiles')
 
-            all_profiles_ids = [p.get('id') for p in profiles]
+            if profiles:
+                # Add selected profile
+                selected_profile_id = response.get('selectedProfile').get('id')
 
-            mc_account = MinecraftAccount.objects.filter(
-                profile_id__in=all_profiles_ids
-            ).first()
+                all_profiles_ids = [p.get('id') for p in profiles]
+
+                mc_account = MinecraftAccount.objects.filter(
+                    profile_id__in=all_profiles_ids
+                ).first()
+            else:
+                mc_account = None
+                selected_profile_id = None
 
             if not mc_account:
                 return create_minecraft_user(

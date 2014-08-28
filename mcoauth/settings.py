@@ -76,6 +76,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'mcoauth.accounts.middleware.RequireEmailMiddleware',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS += (

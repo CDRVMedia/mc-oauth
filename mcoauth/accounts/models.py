@@ -6,11 +6,13 @@ class User(AbstractUser):
     objects = UserManager()
 
     def get_api_dict(self, base_url):
-        minecraft_account = self.minecraft_accounts.primary()
-        minecraft_account_data = minecraft_account.get_api_dict(base_url)
-
         data = {}
-        data['primary_profile'] = minecraft_account_data
         data['email'] = self.email
+
+        minecraft_account = self.minecraft_accounts.primary()
+        
+        if minecraft_account:
+            minecraft_account_data = minecraft_account.get_api_dict(base_url)
+            data['primary_profile'] = minecraft_account_data
 
         return data

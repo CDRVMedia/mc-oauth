@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 
 from registration.forms import RegistrationForm
 
+
 User = get_user_model()
 
 
@@ -30,3 +31,9 @@ class RegistrationFormUniqueEmail(RegistrationForm):
         cleaned_data = super(RegistrationFormUniqueEmail, self).clean()
         cleaned_data['username'] = cleaned_data.get('email')
         return cleaned_data
+
+
+class EmailAddressForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('email',)

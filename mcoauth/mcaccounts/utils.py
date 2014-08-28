@@ -1,3 +1,6 @@
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
+
 from django.contrib.auth import get_user_model
 
 from .models import MinecraftAccount
@@ -6,9 +9,16 @@ from .models import MinecraftAccount
 User = get_user_model()
 
 
-def create_minecraft_user(email, password, profiles, primary):
+def create_minecraft_user(username, password, profiles, primary):
+    try:
+        validate_email(username)
+    except ValidationError:
+        email = None
+    else:
+        email = username
+
     # Save user
-    user = User(email=email)
+    user = User(username=username, email=email)
     user.set_password(password)  # Encrypted
     user.save()
 

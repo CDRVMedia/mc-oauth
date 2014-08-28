@@ -8,7 +8,7 @@
 {% block content %}
     {{ block.super }}
     <br>
-    <form method="POST" action="{{ request.path }}">
+    <form method="POST" action="{{ request.path }}{% if next %}?next={{ next|urlencode }}{% endif %}">
         {% csrf_token %}
         {% bootstrap_form form %}
         {% buttons submit=_('Continue') reset=_("Cancel") %}{% endbuttons %}
