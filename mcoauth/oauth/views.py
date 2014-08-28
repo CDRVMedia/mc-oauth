@@ -1,6 +1,6 @@
 from django.core import signing
 
-from provider.oauth2.views import Authorize
+from provider.oauth2.views import Authorize, AccessTokenView
 
 from .forms import AuthorizationRequestForm
 
@@ -29,3 +29,8 @@ class Authorize(Authorize):
             response.delete_cookie('switch_account')
 
         return response
+
+
+class AccessTokenView(AccessTokenView):
+    def get(self, request):
+        return self.post(request)

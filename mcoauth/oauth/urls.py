@@ -1,8 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from provider.compat.urls import *
-from provider.oauth2.views import Redirect, Capture, AccessTokenView
-from .views import Authorize
+from provider.oauth2.views import Redirect, Capture
+from .views import Authorize, AccessTokenView
 
 
 urlpatterns = patterns('',
