@@ -31,6 +31,10 @@
                         {% endfor %}
                         </select>
                     </div>
+                    {% url "switch_account" as switch_account_url %}
+                    {% with switch_account_url=switch_account_url|add:"?next="|add:request.path %}
+                        <p><small>{% blocktrans with user=request.user %}You're logged in as {{ user }}, <a href="{{ switch_account_url }}">click here to switch</a>.{% endblocktrans %}</small></p>
+                    {% endwith %}
                     <input type="submit" class="btn" value="{% trans "Cancel" %}" />
                     <input type="submit" class="btn btn-success" name="authorize" value="{% trans "Authorize" %}" />
                 </fieldset>

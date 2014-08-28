@@ -4,14 +4,18 @@ from django.contrib.sites.models import RequestSite, Site
 
 from django.http import QueryDict
 from django.contrib.auth import get_user_model
-from django.views.generic import UpdateView, TemplateView
+from django.views.generic import UpdateView, TemplateView, RedirectView
 from django.utils.http import is_safe_url
 from django.shortcuts import redirect
+
 from django.core.urlresolvers import reverse
+from django.core import signing
 
 from registration import signals
 from registration.backends.default.views import RegistrationView
 from registration.models import RegistrationProfile
+
+from provider.views import Mixin as ProviderMixin
 
 from braces.views import LoginRequiredMixin
 
@@ -74,3 +78,17 @@ class SetEmailAddress(LoginRequiredMixin, UpdateView):
         if next_ and not is_safe_url(url=next_, host=self.request.get_host()):
             next_ = None
         return next_ or '/'
+
+
+class SwitchAccount(ProviderMixin, RedirectView):
+    def get_redirect_url(self):
+        next_ = self.request.GET.get('next') or '/'
+        return reverse('auth_login') + '?next=' + urllib.quote(next_)
+
+    def get(self, *args, **kwargs):
+        data = signing.dumps(self.get_data(self.request))
+
+        response = super(SwitchAccount, self).get(*args, **kwargs)
+        response.set_cookie('switch_account', data)
+
+        return response

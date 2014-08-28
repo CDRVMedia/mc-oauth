@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 
-from .views import RegistrationView, RegistrationComplete, SetEmailAddress
+from .views import RegistrationView, RegistrationComplete, SetEmailAddress, \
+    SwitchAccount
 
 urlpatterns = patterns(
     '',
@@ -13,4 +14,5 @@ urlpatterns = patterns(
     url(r'^', include('registration.backends.default.urls')),
     url(r'^set_email_address/$', SetEmailAddress.as_view(),
         name='set_email_address'),
+    url(r'^switch_account/$', SwitchAccount.as_view(), name='switch_account'),
 )
