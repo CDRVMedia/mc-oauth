@@ -40,7 +40,7 @@ logger = getLogger(__name__)
 class AccessTokenView(AccessTokenView):
     def get(self, request):
         logger.debug('Requested Access Token on GET!')
-        return super(AccessTokenView, self).post(request)
+        return self.post(request)
 
     def post(self, request):
         """
