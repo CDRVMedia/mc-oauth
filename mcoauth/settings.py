@@ -187,9 +187,5 @@ LOGGING = {
         },
     },
     'loggers': {
-        'mcoauth.oauth.views': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-        }
     },
 }
