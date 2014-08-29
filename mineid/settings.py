@@ -1,5 +1,5 @@
 """
-Django settings for mcoauth project.
+Django settings for mineid project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -54,10 +54,10 @@ INSTALLED_APPS = (
 
     'gunicorn',
 
-    'mcoauth.core',
-    'mcoauth.accounts',
-    'mcoauth.mcaccounts',
-    'mcoauth.api',
+    'mineid.core',
+    'mineid.accounts',
+    'mineid.mcaccounts',
+    'mineid.api',
 
     'provider',
     'provider.oauth2',
@@ -77,25 +77,25 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'mcoauth.accounts.middleware.RequireEmailMiddleware',
+    'mineid.accounts.middleware.RequireEmailMiddleware',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS += (
     'django.core.context_processors.request',
-    'mcoauth.core.context_processors.domain',
+    'mineid.core.context_processors.domain',
 )
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 
-ROOT_URLCONF = 'mcoauth.urls'
+ROOT_URLCONF = 'mineid.urls'
 
-WSGI_APPLICATION = 'mcoauth.wsgi.application'
+WSGI_APPLICATION = 'mineid.wsgi.application'
 
 
 DATABASES = {'default': dj_database_url.config(
-    default='postgres://postgres:postgres@localhost/mcoauth-local')
+    default='postgres://postgres:postgres@localhost/mineid-local')
 }
 
 if TESTING:
@@ -125,7 +125,7 @@ STATIC_URL = os.environ.get('STATIC_URL', '/static/')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-THUMBNAIL_BACKEND = 'mcoauth.mcaccounts.backends.thumbnail.ThumbnailBackend'
+THUMBNAIL_BACKEND = 'mineid.mcaccounts.backends.thumbnail.ThumbnailBackend'
 
 # AWS S3
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
@@ -152,21 +152,21 @@ OAUTH_SCOPES = (
 )
 
 AUTHENTICATION_BACKENDS += (
-    'mcoauth.mcaccounts.backends.authentication.MinecraftBackend',
+    'mineid.mcaccounts.backends.authentication.MinecraftBackend',
 )
 
 EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
 EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-EMAIL_SUBJECT_PREFIX = '[mc-oauth] '
+EMAIL_SUBJECT_PREFIX = '[MineID] '
 EMAIL_USE_TLS = True
 
 if not EMAIL_HOST_USER and not EMAIL_HOST_PASSWORD:
     # Set backend to console if mail settings not defined
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-DEFAULT_FROM_EMAIL = 'mc-oauth <%s>' % EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = 'MineID <%s>' % EMAIL_HOST_USER
 
 LOGGING = {
     'version': 1,

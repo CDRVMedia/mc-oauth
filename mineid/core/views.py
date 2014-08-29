@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 
 
 class Home(TemplateView):
-    template_name = 'mcoauth/core/home.html'
+    template_name = 'mineid/core/home.html'
 
     def get(self, request):
         if request.user.is_authenticated():

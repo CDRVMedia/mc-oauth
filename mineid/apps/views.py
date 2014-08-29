@@ -7,11 +7,11 @@ from .mixins import AppViewMixin, AppUserObjectsMixin, AppUserObjectMixin, \
 
 
 class AppList(AppViewMixin, AppUserObjectsMixin, ListView):
-    template_name = 'mcoauth/apps/list.html'
+    template_name = 'mineid/apps/list.html'
 
 
 class AppCreate(AppViewMixin, AppUserObjectMixin, AppFormMixin, CreateView):
-    template_name = 'mcoauth/apps/create.html'
+    template_name = 'mineid/apps/create.html'
     form_valid_message = _('Application created')
 
     def get_initial(self):
@@ -22,14 +22,14 @@ class AppCreate(AppViewMixin, AppUserObjectMixin, AppFormMixin, CreateView):
 
 
 class AppUpdate(AppViewMixin, AppUserObjectsMixin, AppFormMixin, UpdateView):
-    template_name = 'mcoauth/apps/update.html'
+    template_name = 'mineid/apps/update.html'
     form_valid_message = _('Application updated')
 
 
 class AppDelete(AppViewMixin, AppUserObjectsMixin, AppDeleteMixin, DeleteView):
-    template_name = 'mcoauth/apps/delete.html'
+    template_name = 'mineid/apps/delete.html'
     form_valid_message = _('Application deleted')
 
 
 class AppCredentials(AppViewMixin, AppUserObjectsMixin, DetailView):
-    template_name = 'mcoauth/apps/credentials.html'
+    template_name = 'mineid/apps/credentials.html'

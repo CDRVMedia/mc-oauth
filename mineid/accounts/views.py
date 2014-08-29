@@ -58,7 +58,7 @@ class RegistrationComplete(TemplateView):
 class SetEmailAddress(LoginRequiredMixin, UpdateView):
     model = User
     form_class = EmailAddressForm
-    template_name = 'mcoauth/accounts/set_email_address.html'
+    template_name = 'mineid/accounts/set_email_address.html'
 
     def get(self, request, *args, **kwargs):
         if request.user.email:

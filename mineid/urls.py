@@ -6,13 +6,13 @@ admin.autodiscover()
 
 urlpatterns = patterns(
     '',
-    url(r'^', include('mcoauth.core.urls')),
-    url(r'^accounts/', include('mcoauth.accounts.urls')),
-    url(r'^apps/', include('mcoauth.apps.urls', namespace='app')),
-    #url(r'^minecraft/', include('mcoauth.mcaccounts.urls',
+    url(r'^', include('mineid.core.urls')),
+    url(r'^accounts/', include('mineid.accounts.urls')),
+    url(r'^apps/', include('mineid.apps.urls', namespace='app')),
+    #url(r'^minecraft/', include('mineid.mcaccounts.urls',
     #    namespace='minecraft')),
-    url(r'^oauth/', include('mcoauth.oauth.urls', namespace='oauth2')),
-    url(r'^api/', include('mcoauth.api.urls', namespace='api')),
+    url(r'^oauth/', include('mineid.oauth.urls', namespace='oauth2')),
+    url(r'^api/', include('mineid.api.urls', namespace='api')),
     url(r'^admin/', include(admin.site.urls)),
 )
 

@@ -13,7 +13,7 @@ class MinecraftViewMixin(LoginRequiredMixin):
 
 
 class MinecraftList(MinecraftViewMixin, ListView):
-    template_name = 'mcoauth/mcaccounts/list.html'
+    template_name = 'mineid/mcaccounts/list.html'
 
     def get_queryset(self):
         return MinecraftAccount.objects.filter(user=self.request.user)
@@ -21,7 +21,7 @@ class MinecraftList(MinecraftViewMixin, ListView):
 
 class MinecraftCreate(MinecraftViewMixin, FormView):
     form_class = MinecraftAccountForm
-    template_name = 'mcoauth/mcaccounts/create.html'
+    template_name = 'mineid/mcaccounts/create.html'
     success_url = reverse_lazy('minecraft:list')
 
     def form_valid(self, form):
@@ -31,5 +31,5 @@ class MinecraftCreate(MinecraftViewMixin, FormView):
 
 class MinecraftDelete(MinecraftViewMixin, DeleteView):
     model = MinecraftAccount
-    template_name = 'mcoauth/mcaccounts/delete.html'
+    template_name = 'mineid/mcaccounts/delete.html'
     success_url = reverse_lazy('minecraft:list')
