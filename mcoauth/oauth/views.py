@@ -38,6 +38,10 @@ from logging import getLogger
 logger = getLogger(__name__)
 
 class AccessTokenView(AccessTokenView):
+    def get(self, request):
+        logger.debug('Requested Access Token on GET!')
+        return super(AccessTokenView, self).post(request)
+
     def post(self, request):
         """
         As per :rfc:`3.2` the token endpoint *only* supports POST requests.
