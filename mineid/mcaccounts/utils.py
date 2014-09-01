@@ -1,15 +1,16 @@
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
-
+from django.db import IntegrityError
 from django.contrib.auth import get_user_model
 
 from .models import MinecraftAccount
+from .exceptions import UserAlreadyExists
 
 
 User = get_user_model()
 
 
-def create_minecraft_user(username, password, profiles, primary):
+def create_minecraft_user(username, profiles, primary):
     try:
         validate_email(username)
     except ValidationError:
@@ -17,10 +18,15 @@ def create_minecraft_user(username, password, profiles, primary):
     else:
         email = username
 
-    # Save user
+    # This user can only log in through Minecraft
+    # authentication backend
     user = User(username=username, email=email)
-    user.set_password(password)  # Encrypted
-    user.save()
+    user.set_unusable_password()
+
+    try:
+        user.save()
+    except IntegrityError:
+        raise UserAlreadyExists
 
     # Save profiles
     for profile in profiles:

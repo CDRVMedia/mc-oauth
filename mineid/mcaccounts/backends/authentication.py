@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from ..authenticate import authenticate
 from ..models import MinecraftAccount
 from ..utils import create_minecraft_user
+from ..exceptions import UserAlreadyExists
 
 
 User = get_user_model()
@@ -32,8 +33,8 @@ class MinecraftBackend(object):
                 selected_profile_id = None
 
             if not mc_account:
-                return create_minecraft_user(
-                    username, password, profiles, primary=selected_profile_id)
+                return create_minecraft_user(username, profiles,
+                                             primary=selected_profile_id)
             else:
                 return mc_account.user
 

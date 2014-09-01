@@ -1,8 +1,12 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
+
 from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import AuthenticationForm
 
 from registration.forms import RegistrationForm
+
+from ..mcaccounts.exceptions import UserAlreadyExists
 
 
 User = get_user_model()
@@ -37,3 +41,16 @@ class EmailAddressForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('email',)
+
+
+class AuthenticationForm(AuthenticationForm):
+    def clean(self):
+        try:
+            return super(AuthenticationForm, self).clean()
+        except UserAlreadyExists:
+            raise forms.ValidationError(
+                _(
+                    "We could not associate your Minecraft account because "
+                    "this email address is already associated with another "
+                    "account."
+                ))
