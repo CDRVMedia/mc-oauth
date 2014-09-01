@@ -7,6 +7,8 @@
 
 {% block content %}
     {{ block.super }}
+    {% url "auth_login" as login_url %}
+    <p>{% blocktrans %}If you already have an account, <a href="{{ login_url }}">click here</a> to sign in.{% endblocktrans %}</p>
     <br>
     <form method="POST" action="{{ request.path }}{% if next %}?next={{ next|urlencode }}{% endif %}">
         {% csrf_token %}

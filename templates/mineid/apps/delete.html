@@ -4,6 +4,7 @@
 {% load bootstrap3 %}
 
 {% block content %}
+    <h1 class="page-header">{% trans "Delete application" %}</h1>
     <form method="POST" action="{{ request.path }}">
         {% csrf_token %}
         <div class="alert alert-warning">{% trans "Be careful, this action cannot be reverted." %}</div>

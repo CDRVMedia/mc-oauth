@@ -6,7 +6,7 @@
 {% block title %}{% trans "Sign in" %}{% endblock %}
 
 {% block content %}
-    <h2>{% trans "Sign in" %}<br><small>{% trans "You can also sign in using your Minecraft account" %}</h2>
+    <h1 class="page-header">{% trans "Sign in" %}<br><small>{% trans "using your email or Minecraft account" %}</h1>
     {% url "registration_register" as registration_url %}
     {% with next=next|urlencode %}
         {% with registration_url=registration_url|add:"?next="|add:next %}

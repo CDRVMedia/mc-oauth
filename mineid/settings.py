@@ -9,11 +9,11 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 import os
 import sys
-
 import dj_database_url
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS, \
-    AUTHENTICATION_BACKENDS
+
 from django.core.urlresolvers import reverse_lazy
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS, \
+                                        AUTHENTICATION_BACKENDS
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -35,7 +35,7 @@ DEBUG = False
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.mineid.org']
 
 if 'test' in sys.argv:
     TESTING = True
